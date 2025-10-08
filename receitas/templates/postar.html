@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+{% load crispy_forms_tags %}
+<h2>Formulário de Postagem</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <div class="post">
+    <div class="autor">{{ post.autor }}</div>
+    <div class="imagem"><img src="/media/{{ post.imagem }}" alt=""></div>
+    <div class="mensagem">{{ post.receita }}</div>
+  </div>
+  <button type="submit">Enviar</button>
+</form>
+
+{% if form.errors %}
+  <div style="color: red;">
+    <h4>Erros encontrados:</h4>
+    {{ form.errors }}
+  </div>
+{% endif %}
+{% endblock conteudo %}

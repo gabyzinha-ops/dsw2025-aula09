@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% block conteudo %}
+<form action="" method="POST">
+    {% csrf_token %}
+{{form|crispy}}
+<input type="submit" value="Login" class="btn btn-primary">
+</form>
+<a href="{% provider_login_url 'google' %}" class="btn btn-danger">Login com Google</a>
+
+{% endblock conteudo %}

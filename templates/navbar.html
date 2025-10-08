@@ -1,0 +1,21 @@
+<nav>
+    <div class="m-1">
+        <a href="{% url 'inicio' %}">Inicio</a>
+        <a href="{% url 'postar' %}">Postar</a>
+    </div>
+    <div class='mx-1 my-0 d-flex p-0'>
+        {% if user.is_authenticated %}
+        <form action=" {% url "logout" %} " method="post" class="m-1 p-0">
+            {% csrf_token %}
+            <input type="submit" value="Logout" class="mx-2 p-0 border-0 bg-transparent text-white my-0">
+        </form>
+        <a href="#">{{ user }}</a>
+        {% else %}
+        <a href="{% url "login" %}">Login</a>
+        <a href="{% url "signup" %}">Cadastro</a>
+        {% endif %}
+        
+        
+        
+    </div>
+</nav>
